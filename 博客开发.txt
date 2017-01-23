@@ -1,0 +1,81 @@
+﻿一、需求分析
+1、采取B/S架构，实现人机互动；
+2、系统页面个性化，强劲视觉冲击力、操作简便；
+3、显示最新文章
+4、用户可以浏览文章、查询文章、发表评论、回复评论
+5、按关键字搜索文章
+二、系统设计
+(1)、系统功能结构
+  博客系统用户分2种：游客、管理员 
+  游客功能：浏览文章、查询文章、发表评论、回复评论
+  管理员功能：文章管理、文章分类管理、评论管理、回复管理、公告管理、用户管理
+(2)、系统功能预览
+  前台：
+    首页：
+      head：按关键字搜索文章
+      main:
+        wrap: 最新|热门 Tab形式显示文章列表
+	  acticleList:
+	    文章title  文章发布时间
+	    文章点赞数，文章评论数 
+	    
+	    
+        rightSide: 公告栏、文章分类
+      foot: 版权信息
+    文章详情页
+      文章标题
+      文章内容
+      文章评论
+      文章回复评论
+    关于页
+    留言页
+三、数据库设计
+  文章表(article)
+  文章分类表(category)
+  评论表(comment)
+  回复表(reply)
+  公告表(notice)
+  管理员表(admin)
+
+文章表：
+  art_id(文章id),
+  cat_id(文章类别id),
+  user_id(管理员id),
+  title(标题),
+  content(内容),
+  like_count(点赞数),
+  pub_time(文章发布时间)
+
+文章分类表
+  cat_id(类别id),
+  name(分类名称),
+  intro(分类简介),
+  parent_id(父类别id)
+
+评论表
+  com_id(评论id),
+  art_id(文章id),
+  username(游客名),
+  content(评论内容)
+  pub_time(评论时间)
+
+回复表(涉及到无限级分类)
+  rep_id(回复id),
+  son_id(子回复id),
+  com_id(评论id),
+  content(回复内容),
+  pub_time(回复时间)
+
+公告表
+  public_id(公告id),
+  title(公告标题),
+  content(公告内容)
+
+管理员表
+  admin_id(管理员id),
+  username(用户名),
+  password(密码),
+  nickname(昵称)
+  telphone(手机)
+  email(邮箱)
+  is_super(是否是超级管理员)
